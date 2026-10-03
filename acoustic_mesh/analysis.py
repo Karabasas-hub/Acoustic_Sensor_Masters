@@ -19,10 +19,10 @@ def to_db(
     """
     x = np.abs(np.asarray(x, dtype=np.float64))
     if reference is None:
-        reference = x.max()
+        reference = float(x.max())
     factor = 10.0 if power else 20.0
 
-    if reference <=0:
+    if reference <= 0:
         return np.full(x.shape, floor_db)
 
     smallest_ratio = 10.0 ** (floor_db / factor)
